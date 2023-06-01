@@ -1,0 +1,17 @@
+body{
+         /* background-image: url(../images/icon.png); */
+         background-color: #ffffff;
+         backdrop-filter: blur(25px);
+}
+
+td{
+         color:#000000;
+}
+
+span{
+         color: yellowgreen;
+}
+
+.hidel{
+         color: yellowgreen;
+}
