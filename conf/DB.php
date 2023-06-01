@@ -75,93 +75,27 @@ function delete($sql = '', $dados = []): int
 }
 
 
-function buscaConfeiteiro()
+
+function buscarEstudanteId($nr)
 {
 
     $res = array();
     global $db;
-    $cmd = $db->prepare("SELECT id,nome FROM confeiteira");
+    $cmd = $db->prepare("SELECT id FROM estudante WHERE nome = :nr");
+    $cmd->bindValue(":nr", $nr);
     $cmd->execute();
     $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-    return $res;
-}
-
-
-function buscaridConf($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT id FROM confeiteira WHERE nome = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $id = $v;
-            }
+    for ($i = 0; $i < count($res); $i++) {
+        foreach ($res[$i] as $k => $v) {
+            $id = $v;
         }
+    }
 
-        return $id;
-       
+    return $id;
 }
 
-function buscaridCli($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT id FROM cliente WHERE nome = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $id = $v;
-            }
-        }
 
-        return $id;
-       
-}
 
-function buscaridBolo($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT id from bolo where nome = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $idd = $v;
-            }
-        }
-
-        return $idd;
-       
-}
-
-function buscarPreco($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT preco FROM bolo WHERE nome = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $id = $v;
-            }
-        }
-
-        return $id;
-       
-}
 
 function buscaEstudante()
 {
@@ -173,54 +107,3 @@ function buscaEstudante()
     $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
     return $res;
 }
-
-function buscaBolo()
-{
-
-    $res = array();
-    global $db;
-    $cmd = $db->prepare("SELECT id,nome FROM bolo");
-    $cmd->execute();
-    $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-    return $res;
-}
-
-
-function buscarNomeBolo($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT nome from bolo where id = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $idd = $v;
-            }
-        }
-
-        return $idd;
-       
-}
-
-function buscarNomeCliente($nr)
-    {
-        
-        $res = array();
-        global $db;
-        $cmd = $db->prepare("SELECT nome from cliente where id = :nr");
-        $cmd->bindValue(":nr", $nr);
-        $cmd->execute();
-        $res = $cmd->fetchAll(PDO::FETCH_ASSOC);
-        for ($i = 0; $i < count($res); $i++) {
-            foreach ($res[$i] as $k => $v) {
-                    $idd = $v;
-            }
-        }
-
-        return $idd;
-       
-}
-
