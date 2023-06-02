@@ -1,6 +1,6 @@
 body{
          /* background-image: url(../images/icon.png); */
-         background-color: #ffffff;
+         background-color:  rgb(225, 250, 246);
          backdrop-filter: blur(25px);
 }
 
@@ -9,9 +9,9 @@ td{
 }
 
 span{
-         color: yellowgreen;
+         color: rgb(255, 255, 255);
 }
 
 .hidel{
-         color: yellowgreen;
+         color:  rgb(181, 247, 238);
 }
