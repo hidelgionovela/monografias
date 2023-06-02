@@ -1,3 +1,18 @@
+<?php
+session_start();
+ob_start();
+
+
+if (!isset($_SESSION['user_id'])) {
+  $_SESSION['msg'] = "Precisa iniciar a Seccao como admin para cadastrar monografia";
+  $_SESSION['ms'] = "bookRegister.php";
+
+  header("Location: login.php");
+}
+?>
+
+
+
 <!doctype html>
 <html lang="en">
 
@@ -36,7 +51,7 @@
     <form class="col-md-4 offset-md-4" action="<?php $_SERVER['PHP_SELF']; ?>" method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <label for="tema" class="form-label">Tema</label>
-        <input type="text" class="form-control" name="tema">
+        <input type="text" class="form-control" name="tema" required>
       </div>
 
       <!-- requere uma consulta -->
@@ -59,13 +74,18 @@
         </select>
 
       </div>
-      <div class="input-group mb-3 mt-3 pt-4">
-        <!-- <label for="tema" class="">Carrege a Monografia em PDF</label> <br> -->
-        <input type="file" class="form-control" name="pdf_file" placeholder="pdf_file">
+      <label for="tema" class="">Carrege a Monografia em PDF</label>
+      <div class="input-group mb-3 ">
+
+        <input type="file" class="form-control" name="pdf_file" placeholder="pdf_file" required>
 
       </div>
       <center> <button type="submit" class="btn btn-primary">Submit</button></center>
     </form>
+  </div>
+
+  <div class="container">
+    <p class="text-danger">NB: Voltando ao Home a Seccao expira</p>
   </div>
 
   <?php
@@ -120,7 +140,7 @@
         ];
 
         create($sql, $dados);
-        header('location: index.php');
+        header('location: bookList.php');
 
         echo "Arquivo enviado com sucesso.";
       } else {
