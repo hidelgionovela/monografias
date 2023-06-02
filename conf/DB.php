@@ -74,6 +74,15 @@ function delete($sql = '', $dados = []): int
     return $stmt->rowCount();
 }
 
+function countRow($sql, $dados = []) {
+    global $db;
+
+    $stmt = $db->prepare($sql);
+    $stmt->execute($dados);
+
+    return $stmt->rowCount();
+}
+
 
 
 function buscarEstudanteId($nr)
