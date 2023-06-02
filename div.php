@@ -18,6 +18,10 @@
                                     <a class="nav-link hidel m-3" href="bookRegister.php">Nova Monografia</a>
                            </li>
 
+                           <li>
+                                    <a class="nav-link hidel m-3" href="studentRegister.php">Novo Estudante</a>
+                           </li>
+
                   </ul>
 
          </div>
